@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Quotes Collection</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <!-- Tailwind CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body class="bg-blue-50 text-gray-800 font-sans p-6">
+
+    <h1 class="text-4xl font-bold text-center text-blue-900 mb-10">💬 Quote Collection</h1>
+
+    <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 max-w-6xl mx-auto">
+        {% for quote in quotes %}
+            <div class="relative p-6 rounded-xl shadow-md transition-transform duration-300 transform hover:-translate-y-1 
+                        {% if quote == spotlight %}border-4 border-blue-500 bg-white{% else %}bg-white border border-gray-200{% endif %}">
+                
+                {% if quote == spotlight %}
+                    <span class="absolute top-2 right-2 bg-blue-500 text-white text-xs font-semibold px-2 py-1 rounded-full shadow">🌟 Spotlight</span>
+                {% endif %}
+                
+                <p class="text-lg italic mb-4">“{{ quote.quote_text }}”</p>
+                <p class="text-right font-semibold text-blue-700">— {{ quote.author }}</p>
+            </div>
+        {% endfor %}
+    </div>
+
+</body>
+</html>
